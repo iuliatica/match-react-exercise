@@ -39,7 +39,7 @@
             </ng-container>
 
             <ng-container matColumnDef="favorite">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="col-xs-5 col-md-1"> </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef class="col-xs-5 col-md-1"> </mat-header-cell>
                 <mat-cell class="icon col-xs-5 col-md-1" *matCellDef="let movie"
                     [ngClass]="{ 'icon-favorite': checkIfFavorite(movie.id), 'icon-not-favorite': !checkIfFavorite(movie.id) }"
                     (click)="addRemoveFavorite(movie.id)">

@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
   static FAVORITE_IDS = 'fav_movies'
 
-  constructor() {}
+  constructor() { }
 
   addRemoveFavorite(movieId: number): boolean {
-    var favoriteMoviesIds = JSON.parse(this.getDataLocal(LocalStorageService.FAVORITE_IDS)) as number[];
+    var favoriteMoviesIds = this.getFavoriteMovies();
 
     if (!favoriteMoviesIds) {
       favoriteMoviesIds = [];
@@ -27,8 +27,12 @@ export class LocalStorageService {
 
   }
   checkIfFavorite(movieId: number) {
-    var favoriteMoviesIds = this.getDataLocal(LocalStorageService.FAVORITE_IDS) as number[];
+    var favoriteMoviesIds = this.getFavoriteMovies();
     return favoriteMoviesIds?.includes(movieId)
+  }
+
+  getFavoriteMovies() {
+    return JSON.parse(this.getDataLocal(LocalStorageService.FAVORITE_IDS)) as number[];
   }
 
   private getDataLocal(key: string): any {

@@ -1,10 +1,10 @@
 export interface Movie {
-    id:number,
+    id: number,
     title: string,
     release_date: Date,
-    genre_ids: number[],
     poster_path: string,
-    firstGenre: string
+    genre_ids: number[],
+    firstGenre: string;
 }
 
 export interface Genre {
@@ -14,10 +14,12 @@ export interface Genre {
 
 export interface APISerachingResponse {
     results: Movie[],
-    total_pages:number,
-    page:number
+    total_pages: number,
+    page: number
 }
-
-export interface APIGenderResponse{
-    genres:Genre[];
+export interface APIMovieResponse extends Movie {
+    genres: Genre[]
+}
+export interface APIGenderResponse {
+    genres: Genre[];
 }
