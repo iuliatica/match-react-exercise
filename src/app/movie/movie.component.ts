@@ -20,6 +20,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   constructor(private movieService: MovieService, private genreService: GenreService, private translationService: TranslationService) { }
 
   ngOnInit(): void {
@@ -27,6 +28,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.pageSource.paginator = this.paginator;
+    this.pageSource.sort = this.sort;
   }
 
   searchMovieByTitle() {

@@ -17,7 +17,7 @@
 
     <span *ngIf="errorMessage">{{ errorMessage }}</span>
     <div [style.display]="pageSource.data.length > 0 ? 'block' : 'none'" class="search-movie">
-        <mat-table [dataSource]="pageSource">
+        <mat-table [dataSource]="pageSource" matSort>
             <ng-container matColumnDef="title">
                 <mat-header-cell *matHeaderCellDef class="col-xs-8 col-md-4">
                    {{'movie.table_header.title'|translate}}
@@ -26,14 +26,14 @@
             </ng-container>
 
             <ng-container matColumnDef="release_date">
-                <mat-header-cell *matHeaderCellDef  class="col-xs-5 col-md-1">
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="col-xs-5 col-md-1">
                     {{'movie.table_header.release_date'|translate}}
                 </mat-header-cell>
                 <mat-cell class="col-xs-5 col-md-1" *matCellDef="let movie">{{ movie.release_date }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="firstGenre">
-                <mat-header-cell *matHeaderCellDef class="col-xs-5 col-md-1">
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="col-xs-5 col-md-1">
                     {{'movie.table_header.genre'|translate}}
                 </mat-header-cell>
                 <mat-cell class="col-xs-5 col-md-1" *matCellDef="let movie">
