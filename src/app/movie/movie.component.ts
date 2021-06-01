@@ -29,6 +29,11 @@ export class MovieComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.pageSource.paginator = this.paginator;
     this.pageSource.sort = this.sort;
+    this.pageSource.filterPredicate = function (data, filter: string): boolean {
+      const releaseYear = new Date(data.release_date).getFullYear();
+      return releaseYear.toString().includes(filter) || data.firstGenre?.toLowerCase().includes(filter);
+    };
+
   }
 
   searchMovieByTitle() {
@@ -49,4 +54,12 @@ export class MovieComponent implements OnInit, AfterViewInit {
       }
     );
   }
+
+  applyFilter(filteringEvent: any) {
+    var filterValue = filteringEvent.value
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.pageSource.filter = filterValue;
+  }
+
 }
