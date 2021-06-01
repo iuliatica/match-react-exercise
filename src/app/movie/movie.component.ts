@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Movie } from '../data-type/movie';
 import { GenreService } from '../service/genre.service';
+import { LocalStorageService } from '../service/local-storage.service';
 import { MovieService } from '../service/movie.service';
 import { TranslationService } from '../service/translation.service';
 
@@ -21,7 +22,10 @@ export class MovieComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private movieService: MovieService, private genreService: GenreService, private translationService: TranslationService) { }
+  constructor(private movieService: MovieService,
+    private genreService: GenreService,
+    private translationService: TranslationService,
+    private localStorage: LocalStorageService) { }
 
   ngOnInit(): void {
   }
@@ -60,6 +64,14 @@ export class MovieComponent implements OnInit, AfterViewInit {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.pageSource.filter = filterValue;
+  }
+
+  checkIfFavorite(movieId: number) {
+    return this.localStorage.checkIfFavorite(movieId);
+  }
+
+  addRemoveFavorite(movieId: number) {
+    this.localStorage.addRemoveFavorite(movieId);
   }
 
 }
