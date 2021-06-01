@@ -1,0 +1,17 @@
+.icon{
+    height: 40px;
+    width: 40px;
+    background-position: center;
+    background-size: 25px 25px;
+  
+    background-repeat: no-repeat;
+    margin-left: 6px;
+    cursor: pointer;
+}
+.icon-favorite{
+    background-image: url('../../assets/icons/favoriteIcon.svg');
+}
+
+.icon-not-favorite{
+    background-image: url('../../assets/icons/notFavoritIcon.svg');
+}

@@ -13,11 +13,15 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { FavoriteMoviesComponent } from './favorite-movies/favorite-movies.component';
+import { MovieTableComponent } from './movie-table/movie-table.component';
 @NgModule({
   declarations: [
     AppComponent,
     MovieComponent,
-    TranslatePipe
+    TranslatePipe,
+    FavoriteMoviesComponent,
+    MovieTableComponent
   ],
   imports: [
     HttpClientModule,

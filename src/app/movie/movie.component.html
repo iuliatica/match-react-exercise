@@ -14,61 +14,6 @@
         </div>
     </div>
 
-    <input *ngIf="pageSource.data.length>0" matInput (keyup)="applyFilter($event.target)"
-        placeholder="{{'movie.filter'|translate}}">
-
     <span *ngIf="errorMessage">{{ errorMessage }}</span>
-    <div [style.display]="pageSource.data.length > 0 ? 'block' : 'none'" class="search-movie">
-        <mat-table [dataSource]="pageSource" matSort>
-
-            <ng-container matColumnDef="poster">
-                <mat-header-cell *matHeaderCellDef class="col-xs-8 col-md-5">
-                    {{'movie.table_header.movie_poster'|translate}}
-                </mat-header-cell>
-                <mat-cell class="col-xs-8 col-md-5" *matCellDef="let movie">
-                    <img *ngIf="movie.poster_path"
-                        src='https://www.themoviedb.org/t/p/w220_and_h330_face/{{movie.poster_path}}'>
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="title">
-                <mat-header-cell *matHeaderCellDef class="col-xs-8 col-md-4">
-                    {{'movie.table_header.title'|translate}}
-                </mat-header-cell>
-                <mat-cell class="col-xs-8 col-md-4" *matCellDef="let movie">{{ movie.title }}</mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="release_date">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="col-xs-5 col-md-1">
-                    {{'movie.table_header.release_date'|translate}}
-                </mat-header-cell>
-                <mat-cell class="col-xs-5 col-md-1" *matCellDef="let movie">{{ movie.release_date }}</mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="firstGenre">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="col-xs-5 col-md-1">
-                    {{'movie.table_header.genre'|translate}}
-                </mat-header-cell>
-                <mat-cell class="col-xs-5 col-md-1" *matCellDef="let movie">
-                    {{movie.firstGenre}}
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="favorite">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="col-xs-5 col-md-1"> </mat-header-cell>
-                <mat-cell class="icon col-xs-5 col-md-1" *matCellDef="let movie"
-                    [ngClass]="{ 'icon-favorite': checkIfFavorite(movie.id), 'icon-not-favorite': !checkIfFavorite(movie.id) }"
-                    (click)="addRemoveFavorite(movie.id)">
-                </mat-cell>
-            </ng-container>
-
-
-            <mat-header-row *matHeaderRowDef="['poster','title', 'release_date','firstGenre','favorite']">
-            </mat-header-row>
-            <mat-row *matRowDef="let movie; columns: ['poster','title', 'release_date','firstGenre','favorite']">
-            </mat-row>
-        </mat-table>
-        <mat-paginator [pageSize]="20" showFirstLastButtons="true">
-        </mat-paginator>
-    </div>
+    <app-movie-table *ngIf="movies" [movies]="movies"></app-movie-table>
 </div>
