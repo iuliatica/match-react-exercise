@@ -22,15 +22,18 @@ export class FavoriteMoviesComponent implements OnInit {
 
   getAllFavoriteMovies() {
     this.favoriteMovies = []
-    const favoriteMoviesId = this.localStorageService.getFavoriteMovies();
-    favoriteMoviesId.forEach(
+    const favoriteMoviesIds = this.localStorageService.getFavoriteMovies();
+    if(favoriteMoviesIds.length ===0){
+      this.dataLoaded=true
+    }
+    favoriteMoviesIds?.forEach(
       movieId => {
         this.movieService.getMovieById(movieId).subscribe(
           movieResponse => {
             var movie = movieResponse as Movie;
             movie.firstGenre = movieResponse.genres[0].name;
             this.favoriteMovies.push(movie);
-            this.dataLoaded = this.favoriteMovies.length === favoriteMoviesId.length
+            this.dataLoaded = this.favoriteMovies.length === favoriteMoviesIds.length
           }
         )
       }

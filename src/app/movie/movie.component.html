@@ -1,13 +1,11 @@
 <div class="search-view">
-    <div class="search-movie row">
-        <div class="by-email-or-voucher col-xs-8 col-md-4">
-            <label class="search-text"> {{ 'movie.search_by_title' | translate }}:</label>
-            <mat-form-field class="search-box" appearance="outline">
-                <input #searchInput type="text" matInput [(ngModel)]="searchInputTitle"
-                    (keyup.enter)="searchMovieByTitle()" />
+    <div class="search-movie">
+        <div class="input-group mb-2">
+            <label class="input-group-text"> {{ 'movie.search_by_title' | translate }}:</label>
+            <input class="form-control" #searchInput type="text" matInput [(ngModel)]="searchInputTitle" (keyup.enter)="searchMovieByTitle()"
+                 />
 
-            </mat-form-field>
-            <button class="search-cta" mat-flat-button color="primary" [disabled]="!searchInputTitle"
+            <button class="search-cta btn btn-primary" mat-flat-button color="primary" [disabled]="!searchInputTitle"
                 (click)="searchMovieByTitle()">
                 {{ 'movie.search' | translate | uppercase }}
             </button>

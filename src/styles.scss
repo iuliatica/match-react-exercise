@@ -33,6 +33,7 @@ $mvp-match-exersice-theme: mat-light-theme((
 // that you are using.
 @include angular-material-theme($mvp-match-exersice-theme);
 
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
