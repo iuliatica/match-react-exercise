@@ -23,7 +23,6 @@ export class MovieTableComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    debugger
     if (changes['movies'].currentValue !== []) {
       this.pageSource.data = changes['movies'].currentValue
     }
