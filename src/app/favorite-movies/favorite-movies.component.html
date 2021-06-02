@@ -1,1 +1,5 @@
 <app-movie-table *ngIf="dataLoaded" [movies]="favoriteMovies"></app-movie-table>
+
+<div class="no-favorite-movies" *ngIf="dataLoaded && favoriteMovies.length===0">
+    {{ 'movie.error.no_favorite'|translate }}
+</div>
